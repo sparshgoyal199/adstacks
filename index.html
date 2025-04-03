@@ -3,25 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>System Info & Mock Data</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
+<body class="flex flex-col items-center justify-center min-h-screen bg-gray-100 text-gray-900">
+
+    <img src="/Adstacks.png" width="250px" alt="Adstacks Logo" class="mb-6">
+
+    <button onclick="fun2()" id="id2" class="px-6 py-2 bg-blue-600 text-white font-medium rounded-lg shadow-md hover:bg-blue-700 transition">
+        Get System Info
+    </button>
+
+    <div id="infoContainer" class="mt-4 space-y-2 text-center">
+        <p><strong>App Name:</strong> <span id="app_name">-</span></p>
+        <p><strong>Version:</strong> <span id="version">-</span></p>
+        <p><strong>Description:</strong> <span id="description">-</span></p>
+    </div>
+    <button onclick="fun3()" id="id3" class="mt-4 px-6 py-2 bg-green-600 text-white font-medium rounded-lg shadow-md hover:bg-green-700 transition hidden">
+        Save Mock Data
+    </button>
+    
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<body>
-    <h1>My name is sparsh</h1>
-    <br>
-    <br>
-    <button onclick="fun2()" id="id2">get system info</button>
-    <br>
-    <br>
-    <button onclick="fun3()" id="id3">Save mock data</button>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/main.js"></script>
-    <script>
-        if ("serviceWorker" in navigator) {
-            navigator.serviceWorker.register("sw.js")
-                .then(() => console.log("Service Worker Registered"));
-        }
-    </script>
+
 </body>
 </html>

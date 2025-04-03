@@ -1,63 +1,60 @@
-let mock_data = {
-    "app_name":"",
-    "version":"",
-    "description":""
-};
+let mock_data = { "app_name": "", "version": "", "description": "" };
+let check = false
 
-function fun2(){
-    fetch('https://3844-106-219-164-121.ngrok-free.app/get_system_info',{
-    headers: {
-        "ngrok-skip-browser-warning": "true"
-    }}).
-    then(res => {
-        if (!res.ok) {
-            return res.text().then(response => {
-                throw new Error(response.substring(11,response.length-2))
-            }) 
-        }
-        return res.json()}
-)
-    .then(data =>{
-        mock_data["app_name"] = data["device_model"]
-        mock_data["version"] = data["os_version"]
-        mock_data["description"] = data["memory"]
-    })
-    .catch(e => {
-        swal.fire({
-            icon:"error",
-            text: `${e}`,
-            className: "sweetBox"
-          })
-    })
-}
-
-function fun3(){
-    fetch('https://3844-106-219-164-121.ngrok-free.app/app',{
-        method:'POST',
-        headers:{"Content-type":"application/json","ngrok-skip-browser-warning": "true"},
-        body:JSON.stringify(mock_data)
+function fun2() {
+    fetch('https://cbcf-106-219-164-121.ngrok-free.app/get_system_info', {
+                headers: { "ngrok-skip-browser-warning": "true" }
     })
     .then(res => {
         if (!res.ok) {
-            //res.text is itself a promise response is the result of promise
             return res.text().then(response => {
-                throw new Error(response.substring(11,response.length-2))
-                //response.substring for customising the format of error send by the backend
-            })  
+                throw new Error(response.substring(11, responslength - 2));
+                    });
         }
-        //we can also show the customise error message into frontend
-        return res.json()
-        //first of all convert the content of backend into json format
+        return res.json();
     })
-    .then(data =>{   
-        console.log(data);
-        
+    .then(data => {
+        mock_data["app_name"] = data["device_model"];
+        mock_data["version"] = data["os_version"];
+        mock_data["description"] = data["memory"];
+        check = true
+        document.getElementById("app_name").textContent = data["device_model"];
+        document.getElementById("version").textContent = data["os_version"];
+        document.getElementById("description").textContent = data["memory"];
+
+
+        document.getElementById("id3").classList.remove("hidden");
     })
     .catch(e => {
-        swal.fire({
-            icon:"error",
+        Swal.fire({
+            icon: "error",
             text: `${e}`,
             className: "sweetBox"
-          })
-    })
+        });
+    });
+}
+
+function fun3() {
+    if (check) {
+        fetch('https://cbcf-106-219-164-121.ngrok-free.app/app', {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(mock_data)
+        })
+        .then(res => res.json())
+        .then(response => {
+            Swal.fire({
+                icon: "success",
+                text: "Data saved successfully!",
+                className: "sweetBox"
+            });
+        })
+        .catch(e => {
+            Swal.fire({
+                icon: "error",
+                text: `${e}`,
+                className: "sweetBox"
+            });
+        });
+    }
 }
