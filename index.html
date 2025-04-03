@@ -10,15 +10,41 @@
 
     <img src="/Adstacks.png" width="250px" alt="Adstacks Logo" class="mb-6">
 
-    <button onclick="fun2()" id="id2" class="px-6 py-2 bg-blue-600 text-white font-medium rounded-lg shadow-md hover:bg-blue-700 transition">
+    <!-- <button onclick="fun2()" id="id2" class="px-6 py-2 bg-blue-600 text-white font-medium rounded-lg shadow-md hover:bg-blue-700 transition">
         Get System Info
-    </button>
+    </button> -->
 
-    <div id="infoContainer" class="mt-4 space-y-2 text-center">
-        <p><strong>App Name:</strong> <span id="app_name">-</span></p>
-        <p><strong>Version:</strong> <span id="version">-</span></p>
-        <p><strong>Description:</strong> <span id="description">-</span></p>
+    <button onclick="fun2()" id="id2" 
+        class="px-6 py-2 bg-blue-600 text-white font-medium rounded-lg shadow-md hover:bg-blue-700 transition flex items-center justify-center">
+    <span id="buttonText">Get System Info</span>
+    <span id="loader" class="ml-2 hidden border-2 border-white border-t-transparent rounded-full w-5 h-5 animate-spin"></span>
+</button>
+
+    <div id="infoContainer" class="mt-4 text-center" style="display: none;">
+        <table class="mx-auto border-collapse border border-gray-400 w-auto">
+            <thead>
+                <tr class="bg-gray-200">
+                    <th class="border border-gray-400 px-4 py-2">Property</th>
+                    <th class="border border-gray-400 px-4 py-2">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="border border-gray-400 px-4 py-2"><strong>App Name</strong></td>
+                    <td class="border border-gray-400 px-4 py-2" id="app_name">-</td>
+                </tr>
+                <tr>
+                    <td class="border border-gray-400 px-4 py-2"><strong>Version</strong></td>
+                    <td class="border border-gray-400 px-4 py-2" id="version">-</td>
+                </tr>
+                <tr>
+                    <td class="border border-gray-400 px-4 py-2"><strong>Description</strong></td>
+                    <td class="border border-gray-400 px-4 py-2" id="description">-</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
+
     <button onclick="fun3()" id="id3" class="mt-4 px-6 py-2 bg-green-600 text-white font-medium rounded-lg shadow-md hover:bg-green-700 transition hidden">
         Save Mock Data
     </button>
