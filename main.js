@@ -40,7 +40,7 @@ function fun2() {
     document.getElementById("buttonText").textContent = "Loading...";
     document.getElementById("loader").classList.remove("hidden");
 
-    fetch('https://cbcf-106-219-164-121.ngrok-free.app/get_system_info', {
+    fetch('https://56ac-106-219-164-121.ngrok-free.app/get_system_info', {
         headers: { "ngrok-skip-browser-warning": "true" }
     })
     .then(res => {
@@ -84,7 +84,7 @@ function fun2() {
 
 function fun3() {
     if (check) {
-        fetch('https://cbcf-106-219-164-121.ngrok-free.app/app', {
+        fetch('https://56ac-106-219-164-121.ngrok-free.app/app', {
             method: 'POST',
             headers: { "Content-Type": "application/json","ngrok-skip-browser-warning": "true" },
             body: JSON.stringify(mock_data)
